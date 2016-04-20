@@ -5,5 +5,6 @@ use_frameworks!
 
 target 'DropboxIntegration' do
     pod 'SwiftyDropbox'
+	pod ‘Alamofire’
 end
 
