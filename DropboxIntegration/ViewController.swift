@@ -10,13 +10,20 @@ import UIKit
 import SwiftyDropbox
 
 class ViewController: UIViewController {
-
-   
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-    
+        
+        if let client = Dropbox.authorizedClient {
+            client.users.getCurrentAccount().response({ (response, error) in
+                print("***  Get Current User ***")
+                if let account = response {
+                    print("Hello \(account.name.givenName)!")
+                } else {
+                    print(error!)
+                }
+            })
+        }
     }
     
     @IBAction func linkToDropbox(sender: UIButton) {
@@ -25,8 +32,7 @@ class ViewController: UIViewController {
         } else {
             print("User is already authorized!")
         }
-        
     }
-
+    
 }
 
